@@ -1,128 +1,81 @@
 import React, { useState } from 'react';
+import { FaInstagram, FaYoutube, FaGithub, FaLinkedin, FaTiktok } from 'react-icons/fa';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    nome: "",
-    email: "",
-    mensagem: "",
-  });
+  const [formData, setFormData] = useState({ nome: '', email: '', mensagem: '' });
 
   const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
+    setFormData({
+      ...formData,
       [e.target.name]: e.target.value,
-    }));
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
     alert("Formulário enviado (exemplo)");
-    // Chamada de back-end real ou serviço de email aqui
   };
 
   return (
-    <section
-      id="contact"
-      className="h-screen w-full flex flex-col justify-center items-center transition-colors"
-    >
+    <section id="contact" className="h-screen flex flex-col items-center justify-center">
       <h1 className="text-3xl font-bold mb-8">Contact</h1>
-
-      <form
-        onSubmit={handleSubmit}
-        className="bg-gray-200 dark:bg-gray-800 p-6 rounded shadow w-10/12 md:w-1/2"
-      >
+      <form onSubmit={handleSubmit} className="bg-gray-200 p-6 rounded shadow w-10/12 md:w-1/2">
         <div className="mb-4">
-          <label className="block mb-2" htmlFor="nome">
-            Nome:
-          </label>
+          <label className="block mb-2">Nome:</label>
           <input
             type="text"
-            id="nome"
             name="nome"
             value={formData.nome}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
-            required
+            className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
         <div className="mb-4">
-          <label className="block mb-2" htmlFor="email">
-            E-mail:
-          </label>
+          <label className="block mb-2">E-mail:</label>
           <input
             type="email"
-            id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
-            required
+            className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
         <div className="mb-4">
-          <label className="block mb-2" htmlFor="mensagem">
-            Mensagem:
-          </label>
+          <label className="block mb-2">Mensagem:</label>
           <textarea
-            id="mensagem"
             name="mensagem"
             value={formData.mensagem}
             onChange={handleChange}
             rows={5}
-            className="w-full p-2 border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
-            required
+            className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500"
-        >
+        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500">
           Enviar
         </button>
       </form>
 
-      {/* Redes sociais */}
-      <div className="flex space-x-4 mt-6">
-        <a
-          href="https://instagram.com/seu_usuario"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          Instagram
+      {/* Redes Sociais */}
+      <div className="flex space-x-4 mt-6 text-blue-600">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1">
+          <FaInstagram />
+          <span>Instagram</span>
         </a>
-        <a
-          href="https://youtube.com/seu_canal"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          YouTube
+        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1">
+          <FaYoutube />
+          <span>YouTube</span>
         </a>
-        <a
-          href="https://github.com/seu_usuario"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          GitHub
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1">
+          <FaGithub />
+          <span>GitHub</span>
         </a>
-        <a
-          href="https://linkedin.com/in/seu_usuario"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          LinkedIn
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1">
+          <FaLinkedin />
+          <span>LinkedIn</span>
         </a>
-        <a
-          href="https://tiktok.com/@seu_usuario"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          TikTok
+        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1">
+          <FaTiktok />
+          <span>TikTok</span>
         </a>
       </div>
     </section>
