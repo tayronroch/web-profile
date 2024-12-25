@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos globais para modo claro/escuro */
+@layer base {
+    html, body {
+      @apply bg-white text-black dark:bg-black dark:text-white;
+    }
+  }
+  
