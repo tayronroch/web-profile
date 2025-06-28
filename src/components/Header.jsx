@@ -65,35 +65,49 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 w-full bg-gray-800 text-white z-50 dark:bg-gray-900 transition-colors">
+    <header className="fixed top-0 w-full z-50 transition-all duration-300 glass dark:glass-dark">
       <nav className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-        {/* Logo/Título */}
-        <div className="text-2xl font-bold cursor-pointer">
-          Meu Currículo
+        {/* Logo/Título com gradiente */}
+        <div className="text-2xl font-bold cursor-pointer bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+          Tayron Rocha
         </div>
 
-        {/* Menu Desktop */}
-        <div className="hidden md:flex space-x-4">
-          <button onClick={() => scrollToSection('home')} className="hover:text-gray-300">
-            Home
-          </button>
-          <button onClick={() => scrollToSection('skills')} className="hover:text-gray-300">
-            Skills
-          </button>
-          <button onClick={() => scrollToSection('projects')} className="hover:text-gray-300">
-            Projects
-          </button>
-          <button onClick={() => scrollToSection('blog')} className="hover:text-gray-300">
-            Blog
-          </button>
-          <button onClick={() => scrollToSection('about')} className="hover:text-gray-300">
-            About
-          </button>
-          <button onClick={() => scrollToSection('contact')} className="hover:text-gray-300">
-            Contact
-          </button>
+        {/* Menu Desktop com efeitos */}
+        <div className="hidden md:flex space-x-6">
+          {[
+            { id: 'home', label: 'Home' },
+            { id: 'skills', label: 'Skills' },
+            { id: 'projects', label: 'Projects' },
+            { id: 'blog', label: 'Blog' },
+            { id: 'about', label: 'About' },
+            { id: 'contact', label: 'Contact' }
+          ].map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className="relative group hover:text-blue-500 transition-colors duration-300 font-medium"
+            >
+              {item.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
+            </button>
+          ))}
+        </div>
 
-        
+        {/* Botões de ação */}
+        <div className="hidden md:flex items-center space-x-4">
+          <button
+            onClick={toggleDarkMode}
+            className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 transform hover:scale-110"
+          >
+            {isDarkMode ? '☀️' : '🌙'}
+          </button>
+          
+          <button
+            onClick={scrollToTop}
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          >
+            ↑ Topo
+          </button>
         </div>
 
         {/* Menu Mobile + Botões */}
@@ -101,21 +115,24 @@ const Header = () => {
           {/* Botão Dark/Light (Mobile) */}
           <button
             onClick={toggleDarkMode}
-            className="bg-gray-700 hover:bg-gray-600 px-2 py-1 rounded"
+            className="bg-gray-700 hover:bg-gray-600 px-2 py-1 rounded transition-colors duration-300"
           >
-            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+            {isDarkMode ? '☀️' : '🌙'}
           </button>
 
           {/* Botão Topo (Mobile) */}
           <button
             onClick={scrollToTop}
-            className="bg-blue-600 hover:bg-blue-500 px-2 py-1 rounded"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-2 py-1 rounded transition-all duration-300"
           >
             ↑ Topo
           </button>
 
           {/* Botão Menu Hamburguer (Mobile) */}
-          <button onClick={toggleMenu}>
+          <button 
+            onClick={toggleMenu}
+            className="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded transition-colors duration-300"
+          >
             Menu
           </button>
         </div>
@@ -123,46 +140,46 @@ const Header = () => {
 
       {/* Dropdown Mobile */}
       {isOpen && (
-        <div className="md:hidden bg-gray-700">
+        <div className="md:hidden bg-gray-700/90 backdrop-blur-sm border-t border-gray-600">
           <button
             onClick={() => scrollToSection('home')}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-600"
+            className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
           >
             Home
           </button>
           <button
             onClick={() => scrollToSection('skills')}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-600"
+            className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
           >
             Skills
           </button>
           <button
             onClick={() => scrollToSection('projects')}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-600"
+            className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
           >
             Projects
           </button>
           <button
             onClick={() => scrollToSection('blog')}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-600"
+            className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
           >
             Blog
           </button>
           <button
             onClick={() => scrollToSection('about')}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-600"
+            className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
           >
             About
           </button>
           <button
             onClick={() => scrollToSection('contact')}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-600"
+            className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
           >
             Contact
           </button>
           <button
             onClick={scrollToTop}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-600"
+            className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
           >
             ↑ Topo
           </button>

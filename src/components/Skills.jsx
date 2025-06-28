@@ -1,60 +1,140 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { 
+  FaBrain, 
+  FaCode, 
+  FaDatabase, 
+  FaCloud, 
+  FaShieldAlt, 
+  FaUsers, 
+  FaLightbulb, 
+  FaRocket, 
+  FaHeart,
+  FaJs,
+  FaPython,
+  FaReact,
+  FaNodeJs,
+  FaDocker,
+  FaAws,
+  FaGitAlt
+} from 'react-icons/fa';
 
 const Skills = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const cards = document.querySelectorAll('.skill-card');
+    cards.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
+
   const softSkills = [
-    "Pensamento analítico",
-    "Pensamento criativo",
-    "Flexibilidade",
-    "Agilidade",
-    "Resolução de conflitos",
-    "Gestão de stakeholders",
-    "Inteligência emocional",
-    "Empatia",
-    "Trabalho em equipe",
+    { name: "Pensamento Analítico", icon: FaBrain, level: 95 },
+    { name: "Pensamento Criativo", icon: FaLightbulb, level: 90 },
+    { name: "Flexibilidade", icon: FaRocket, level: 85 },
+    { name: "Agilidade", icon: FaRocket, level: 88 },
+    { name: "Resolução de Conflitos", icon: FaHeart, level: 92 },
+    { name: "Gestão de Stakeholders", icon: FaUsers, level: 87 },
+    { name: "Inteligência Emocional", icon: FaHeart, level: 90 },
+    { name: "Empatia", icon: FaHeart, level: 93 },
+    { name: "Trabalho em Equipe", icon: FaUsers, level: 89 },
   ];
 
   const hardSkills = [
-    "Linguagens de programação: Javascript, Python",
-    "Arquitetura de software (SOLID)",
-    "Bancos de dados: SQL",
-    "Integração e entrega contínua",
-    "Gerenciamento de projetos",
-    "Gerenciamento de Incidentes de Rede",
-    "Conhecimento em segurança da informação"
+    { name: "JavaScript", icon: FaJs, level: 90 },
+    { name: "Python", icon: FaPython, level: 85 },
+    { name: "React", icon: FaReact, level: 88 },
+    { name: "Node.js", icon: FaNodeJs, level: 82 },
+    { name: "SQL Databases", icon: FaDatabase, level: 85 },
+    { name: "Docker", icon: FaDocker, level: 75 },
+    { name: "AWS", icon: FaAws, level: 70 },
+    { name: "Git", icon: FaGitAlt, level: 88 },
+    { name: "Arquitetura SOLID", icon: FaCode, level: 80 },
   ];
 
-  const ProgressBar = ({ skill }) => (
-    <div className="mb-4">
-      <div className="flex justify-between">
-        <span>{skill}</span>
-        <span>100%</span>
+  const SkillCard = ({ skill, index }) => {
+    const IconComponent = skill.icon;
+    
+    return (
+      <div 
+        className={`skill-card fade-in bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700`}
+        style={{ animationDelay: `${index * 100}ms` }}
+      >
+        <div className="flex items-center mb-4">
+          <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-4">
+            <IconComponent className="text-white text-xl" />
+          </div>
+          <div>
+            <h3 className="font-semibold text-gray-800 dark:text-gray-200">{skill.name}</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{skill.level}%</p>
+          </div>
+        </div>
+        
+        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+          <div 
+            className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-1000 ease-out"
+            style={{ width: '0%' }}
+            onLoad={(e) => {
+              setTimeout(() => {
+                e.target.style.width = `${skill.level}%`;
+              }, index * 100);
+            }}
+          ></div>
+        </div>
       </div>
-      <div className="w-full bg-gray-300 dark:bg-gray-700 h-2 rounded">
-        <div className="bg-blue-600 h-2 rounded" style={{ width: '100%' }}></div>
-      </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <section
+      ref={sectionRef}
       id="skills"
-      className="h-screen w-full flex flex-col justify-center items-center transition-colors"
+      className="min-h-screen w-full flex flex-col justify-center items-center py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800"
     >
-      <h1 className="text-3xl font-bold mb-8">Skills</h1>
-      <div className="flex flex-col md:flex-row w-10/12 md:w-8/12 gap-8">
+      <div className="text-center mb-16">
+        <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          Minhas Habilidades
+        </h1>
+        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          Uma combinação de habilidades técnicas e interpessoais que me permitem 
+          criar soluções inovadoras e trabalhar efetivamente em equipe.
+        </p>
+      </div>
+
+      <div className="w-full max-w-7xl px-4">
         {/* Soft Skills */}
-        <div className="w-full md:w-1/2">
-          <h2 className="text-xl font-semibold mb-4">Soft Skills</h2>
-          {softSkills.map((skill, i) => (
-            <ProgressBar skill={skill} key={i} />
-          ))}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-gray-200">
+            Soft Skills
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {softSkills.map((skill, index) => (
+              <SkillCard key={index} skill={skill} index={index} />
+            ))}
+          </div>
         </div>
+
         {/* Hard Skills */}
-        <div className="w-full md:w-1/2">
-          <h2 className="text-xl font-semibold mb-4">Hard Skills</h2>
-          {hardSkills.map((skill, i) => (
-            <ProgressBar skill={skill} key={i} />
-          ))}
+        <div>
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-gray-200">
+            Hard Skills
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {hardSkills.map((skill, index) => (
+              <SkillCard key={index} skill={skill} index={index + softSkills.length} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
