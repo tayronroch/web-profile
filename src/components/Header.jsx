@@ -56,14 +56,6 @@ const Header = () => {
     }
   };
 
-  // Volta ao topo (Home)
-  const scrollToTop = () => {
-    const homeSection = document.getElementById('home');
-    if (homeSection) {
-      homeSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <header className="fixed top-0 w-full z-50 transition-all duration-300 glass dark:glass-dark">
       <nav className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -93,20 +85,13 @@ const Header = () => {
           ))}
         </div>
 
-        {/* Botões de ação */}
-        <div className="hidden md:flex items-center space-x-4">
+        {/* Botão Dark Mode */}
+        <div className="hidden md:flex items-center">
           <button
             onClick={toggleDarkMode}
             className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 transform hover:scale-110"
           >
             {isDarkMode ? '☀️' : '🌙'}
-          </button>
-          
-          <button
-            onClick={scrollToTop}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-          >
-            ↑ Topo
           </button>
         </div>
 
@@ -118,14 +103,6 @@ const Header = () => {
             className="bg-gray-700 hover:bg-gray-600 px-2 py-1 rounded transition-colors duration-300"
           >
             {isDarkMode ? '☀️' : '🌙'}
-          </button>
-
-          {/* Botão Topo (Mobile) */}
-          <button
-            onClick={scrollToTop}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-2 py-1 rounded transition-all duration-300"
-          >
-            ↑ Topo
           </button>
 
           {/* Botão Menu Hamburguer (Mobile) */}
@@ -176,12 +153,6 @@ const Header = () => {
             className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
           >
             Contact
-          </button>
-          <button
-            onClick={scrollToTop}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
-          >
-            ↑ Topo
           </button>
         </div>
       )}
