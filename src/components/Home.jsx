@@ -53,12 +53,13 @@ const Home = () => {
         {/* Nome com animação */}
         <h1 
           ref={nameRef}
-          className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent opacity-0 transform translate-y-8 transition-all duration-1000"
+          className="text-5xl md:text-7x1 font-bold mb-6 bg-gradient-to-r from-blue-700 via-purple-600 to-pink-600 bg-clip-text text-transparent opacity-0 transform translate-y-8 transition-all duration-1000"
         >
           Tayron Rocha
         </h1>
 
         {/* Título com animação */}
+        
         <h2 
           ref={titleRef}
           className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 opacity-0 transform translate-y-8 transition-all duration-1000"
