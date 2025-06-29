@@ -17,9 +17,9 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="h-screen flex flex-col items-center justify-center">
+    <section id="contact" className="min-h-screen flex flex-col items-center justify-center py-12">
       <h1 className="text-3xl font-bold mb-8">Contact</h1>
-      <form onSubmit={handleSubmit} className="bg-gray-200 p-6 rounded shadow w-10/12 md:w-1/2">
+      <form onSubmit={handleSubmit} className="bg-gray-200 p-6 rounded shadow w-full max-w-md px-2">
         <div className="mb-4">
           <label className="block mb-2">Nome:</label>
           <input
@@ -56,7 +56,7 @@ const Contact = () => {
       </form>
 
       {/* Redes Sociais */}
-      <div className="flex space-x-4 mt-6 text-blue-600">
+      <div className="flex flex-wrap justify-center gap-2 mt-6 text-blue-600">
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1">
           <FaInstagram />
           <span>Instagram</span>

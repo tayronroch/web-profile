@@ -62,7 +62,7 @@ const Home = () => {
         
         <h2 
           ref={titleRef}
-          className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 opacity-0 transform translate-y-8 transition-all duration-1000"
+          className="text-xl md:text-1xl text-gray-600 dark:text-gray-300 mb-8 opacity-0 transform translate-y-8 transition-all duration-1000"
         >
           DevSecOps • Engenheiro de Redes • Engenheiro de Software • Engenheiro de Segurança        </h2>
 

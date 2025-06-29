@@ -41,7 +41,7 @@ const Skills = () => {
   }, []);
 
   const softSkills = [
-    { name: "Resolução de Problemas", icon: FaPuzzlePiece, level: 100, animation: "bounce" },
+    { name: "Troubleshoot", icon: FaPuzzlePiece, level: 100, animation: "bounce" },
     { name: "Pensamento Analítico", icon: FaBrain, level: 95, animation: "pulse" },
     { name: "Pensamento Criativo", icon: FaLightbulb, level: 90, animation: "spin" },
     { name: "Flexibilidade", icon: FaRocket, level: 85, animation: "wiggle" },

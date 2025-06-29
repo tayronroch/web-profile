@@ -100,7 +100,7 @@ const Header = () => {
           {/* Botão Dark/Light (Mobile) */}
           <button
             onClick={toggleDarkMode}
-            className="bg-gray-700 hover:bg-gray-600 px-2 py-1 rounded transition-colors duration-300"
+            className="bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 px-2 py-1 rounded transition-colors duration-300"
           >
             {isDarkMode ? '☀️' : '🌙'}
           </button>
@@ -108,7 +108,7 @@ const Header = () => {
           {/* Botão Menu Hamburguer (Mobile) */}
           <button 
             onClick={toggleMenu}
-            className="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded transition-colors duration-300"
+            className="bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 px-3 py-1 rounded transition-colors duration-300"
           >
             Menu
           </button>
@@ -116,46 +116,47 @@ const Header = () => {
       </nav>
 
       {/* Dropdown Mobile */}
-      {isOpen && (
-        <div className="md:hidden bg-gray-700/90 backdrop-blur-sm border-t border-gray-600">
-          <button
-            onClick={() => scrollToSection('home')}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
-          >
-            Home
-          </button>
-          <button
-            onClick={() => scrollToSection('skills')}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
-          >
-            Skills
-          </button>
-          <button
-            onClick={() => scrollToSection('projects')}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
-          >
-            Projects
-          </button>
-          <button
-            onClick={() => scrollToSection('blog')}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
-          >
-            Blog
-          </button>
-          <button
-            onClick={() => scrollToSection('about')}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
-          >
-            About
-          </button>
-          <button
-            onClick={() => scrollToSection('contact')}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
-          >
-            Contact
-          </button>
-        </div>
-      )}
+      <div
+        className={`md:hidden fixed left-0 right-0 top-[64px] z-40 transition-all duration-300 transform ${isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'} glass dark:glass-dark border-t border-gray-200 dark:border-gray-600`}
+        style={{ minHeight: isOpen ? '220px' : '0px' }}
+      >
+        <button
+          onClick={() => scrollToSection('home')}
+          className="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
+        >
+          Home
+        </button>
+        <button
+          onClick={() => scrollToSection('skills')}
+          className="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
+        >
+          Skills
+        </button>
+        <button
+          onClick={() => scrollToSection('projects')}
+          className="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
+        >
+          Projects
+        </button>
+        <button
+          onClick={() => scrollToSection('blog')}
+          className="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
+        >
+          Blog
+        </button>
+        <button
+          onClick={() => scrollToSection('about')}
+          className="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
+        >
+          About
+        </button>
+        <button
+          onClick={() => scrollToSection('contact')}
+          className="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
+        >
+          Contact
+        </button>
+      </div>
     </header>
   );
 };
