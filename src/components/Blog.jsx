@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Blog = () => {
   return (
@@ -8,7 +8,8 @@ const Blog = () => {
     >
       <h1 className="text-3xl font-bold mb-8">Blog</h1>
       <p className="text-center w-10/12 md:w-6/12 mb-4">
-        Aqui você pode integrar o kleyclock ou outro CMS.
+        Futuramente aqui haverá uma seção de blog onde artigos interessantes
+        serão compartilhados.
       </p>
       <div className="bg-gray-200 dark:bg-gray-800 p-4 rounded shadow max-w-xl w-full">
         <h2 className="text-xl font-semibold mb-2">Título do Artigo</h2>

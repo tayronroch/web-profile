@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 // Ícones da lib react-icons
-import { FaWhatsapp, FaArrowUp } from 'react-icons/fa';
+import { FaWhatsapp, FaArrowUp } from "react-icons/fa";
 
 const FloatButtons = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -15,21 +15,24 @@ const FloatButtons = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Abrir WhatsApp
   const openWhatsApp = () => {
-    const phoneNumber = '5511999999999'; // Substitua pelo seu número
-    const message = 'Olá! Vi seu portfólio e gostaria de conversar sobre oportunidades de trabalho.';
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    const phoneNumber = "5511999936376"; // Substitua pelo seu número
+    const message =
+      "Olá! Vi seu portfólio e gostaria de conversar sobre oportunidades de trabalho.";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(whatsappUrl, "_blank");
   };
 
   // Scroll suave para o topo
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -98,19 +101,30 @@ const FloatButtons = () => {
 
       <style jsx>{`
         @keyframes fade-in {
-          from { opacity: 0; transform: translateY(10px) scale(0.9); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
+          from {
+            opacity: 0;
+            transform: translateY(10px) scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
         }
-        
+
         @keyframes soft-pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.8; }
+          0%,
+          100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.8;
+          }
         }
-        
+
         .animate-fade-in {
           animation: fade-in 0.4s ease-out;
         }
-        
+
         .animate-soft-pulse {
           animation: soft-pulse 3s ease-in-out infinite;
         }

@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa';
+import React, { useEffect, useRef } from "react";
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from "react-icons/fa";
 
 const Home = () => {
   const nameRef = useRef(null);
@@ -9,16 +9,16 @@ const Home = () => {
     // Animação de digitação para o nome
     const name = nameRef.current;
     const title = titleRef.current;
-    
+
     if (name && title) {
       setTimeout(() => {
-        name.style.opacity = '1';
-        name.style.transform = 'translateY(0)';
+        name.style.opacity = "1";
+        name.style.transform = "translateY(0)";
       }, 500);
-      
+
       setTimeout(() => {
-        title.style.opacity = '1';
-        title.style.transform = 'translateY(0)';
+        title.style.opacity = "1";
+        title.style.transform = "translateY(0)";
       }, 1000);
     }
   }, []);
@@ -41,8 +41,8 @@ const Home = () => {
         <div className="mb-8">
           <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1 shadow-2xl">
             <div className="w-full h-full rounded-full overflow-hidden">
-              <img 
-                src="https://avatars.githubusercontent.com/u/94794004?v=4" 
+              <img
+                src="https://avatars.githubusercontent.com/u/94794004?v=4"
                 alt="Foto de Perfil"
                 className="w-full h-full object-cover"
               />
@@ -51,7 +51,7 @@ const Home = () => {
         </div>
 
         {/* Nome com animação */}
-        <h1 
+        <h1
           ref={nameRef}
           className="text-5xl md:text-7x1 font-bold mb-6 bg-gradient-to-r from-blue-700 via-purple-600 to-pink-600 bg-clip-text text-transparent opacity-0 transform translate-y-8 transition-all duration-1000"
         >
@@ -59,25 +59,32 @@ const Home = () => {
         </h1>
 
         {/* Título com animação */}
-        
-        <h2 
+
+        <h2
           ref={titleRef}
           className="text-xl md:text-1xl text-gray-600 dark:text-gray-300 mb-8 opacity-0 transform translate-y-8 transition-all duration-1000"
         >
-          DevSecOps • Engenheiro de Redes • Engenheiro de Software • Engenheiro de Segurança        </h2>
+          • Engenheiro de Redes • Engenheiro de Software •{" "}
+        </h2>
 
         {/* Descrição */}
         <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-          Apaixonado por tecnologia e inovação. Especializado em Redes de computadores, e Segurança da Informação, 
-          análise de dados e soluções criativas para problemas complexos.
+          Apaixonado por tecnologia e inovação. Especializado em Redes de
+          computadores, e Gestão de Tecnologia da Informação, automação de redes
+          e soluções criativas para problemas complexos.
         </p>
 
         {/* Botões de ação */}
         <div className="flex flex-wrap justify-center gap-4 mb-8">
-          <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
-            <FaDownload className="text-sm" />
-            Download CV
-          </button>
+          <a
+            href="https://www.linkedin.com/in/tayronroch/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2"
+          >
+            <FaLinkedin className="text-sm" />
+            Ver LinkedIn
+          </a>
           <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
             Ver Projetos
           </button>
@@ -85,13 +92,26 @@ const Home = () => {
 
         {/* Redes sociais */}
         <div className="flex justify-center space-x-6">
-          <a href="#" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors duration-300 transform hover:scale-110">
+          <a
+            href="https://github.com/tayronroch"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors duration-300 transform hover:scale-110"
+          >
             <FaGithub size={24} />
           </a>
-          <a href="#" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors duration-300 transform hover:scale-110">
+          <a
+            href="https://www.linkedin.com/in/tayronroch/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors duration-300 transform hover:scale-110"
+          >
             <FaLinkedin size={24} />
           </a>
-          <a href="#" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors duration-300 transform hover:scale-110">
+          <a
+            href="mailto:contato@tayronrocha.com"
+            className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors duration-300 transform hover:scale-110"
+          >
             <FaEnvelope size={24} />
           </a>
         </div>
