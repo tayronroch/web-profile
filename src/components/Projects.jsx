@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   FaGithub,
   FaYoutube,
@@ -9,8 +9,6 @@ import {
 } from "react-icons/fa";
 
 const Projects = () => {
-  const [hoveredProject, setHoveredProject] = useState(null);
-
   const projects = [
     {
       title: "LAB - ASR 100X-X Cisco",
@@ -68,8 +66,6 @@ const Projects = () => {
     return (
       <div
         className={`group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700`}
-        onMouseEnter={() => setHoveredProject(index)}
-        onMouseLeave={() => setHoveredProject(null)}
         style={{ animationDelay: `${index * 200}ms` }}
       >
         {/* Imagem do projeto */}
@@ -134,11 +130,6 @@ const Projects = () => {
             </a>
           </div>
         </div>
-
-        {/* Overlay hover */}
-        {hoveredProject === index && (
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm transition-all duration-300"></div>
-        )}
       </div>
     );
   };
