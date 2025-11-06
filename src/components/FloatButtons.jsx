@@ -21,7 +21,7 @@ const FloatButtons = () => {
 
   // Abrir WhatsApp
   const openWhatsApp = () => {
-    const phoneNumber = "5511999936376"; // Substitua pelo seu número
+    const phoneNumber = "5586999936376"; // Substitua pelo seu número
     const message =
       "Olá! Vi seu portfólio e gostaria de conversar sobre oportunidades de trabalho.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
