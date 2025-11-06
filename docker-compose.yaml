@@ -3,7 +3,6 @@ version: "3.8"
 services:
   web:
     build: .
-
     container_name: web-profile
     restart: unless-stopped
 
@@ -12,22 +11,6 @@ services:
 
     networks:
       - coolify
-
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=coolify"
-      # HTTP Router (redireciona para HTTPS)
-      - "traefik.http.routers.profile-http.rule=Host(`profile.tayronrocha.com`)"
-      - "traefik.http.routers.profile-http.entrypoints=web"
-      - "traefik.http.routers.profile-http.middlewares=redirect-to-https"
-      # HTTPS Router
-      - "traefik.http.routers.profile.rule=Host(`profile.tayronrocha.com`)"
-      - "traefik.http.routers.profile.entrypoints=websecure"
-      - "traefik.http.routers.profile.tls=true"
-      - "traefik.http.routers.profile.tls.certresolver=letsencrypt"
-      - "traefik.http.services.profile.loadbalancer.server.port=8383"
-      # Middleware para redirecionamento HTTPS
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
 
 networks:
   coolify:
