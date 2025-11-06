@@ -13,7 +13,7 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "Lab de Rede 1",
+      title: "LAB - ASR 100X-X Cisco",
       repoLink: "https://github.com/tayronroch/CISCO-ASR-100X-X",
       videoLink: "https://youtube.com/link_para_video_1",
       description:
