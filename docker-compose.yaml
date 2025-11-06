@@ -8,45 +8,23 @@ services:
     networks:
       - coolify
     labels:
-      # Habilitar Traefik
       - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
 
-      # Configuração HTTP
+      # HTTP Router (redireciona para HTTPS)
+      - "traefik.http.routers.web-profile-http.rule=Host(`tayronrocha.com`) || Host(`www.tayronrocha.com`)"
+      - "traefik.http.routers.web-profile-http.entrypoints=web"
+      - "traefik.http.routers.web-profile-http.middlewares=redirect-to-https"
+
+      # HTTPS Router
       - "traefik.http.routers.web-profile.rule=Host(`tayronrocha.com`) || Host(`www.tayronrocha.com`)"
-      - "traefik.http.routers.web-profile.entrypoints=web"
-      - "traefik.http.routers.web-profile.middlewares=redirect-to-https@docker"
-
-      # Configuração HTTPS
-      - "traefik.http.routers.web-profile-secure.rule=Host(`tayronrocha.com`) || Host(`www.tayronrocha.com`)"
-      - "traefik.http.routers.web-profile-secure.entrypoints=websecure"
-      - "traefik.http.routers.web-profile-secure.tls=true"
-      - "traefik.http.routers.web-profile-secure.tls.certresolver=letsencrypt"
-
-      # Middleware para redirect HTTP -> HTTPS
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
-
-      # Middleware para redirect www -> non-www (opcional)
-      - "traefik.http.middlewares.redirect-www.redirectregex.regex=^https://www\\.(.+)"
-      - "traefik.http.middlewares.redirect-www.redirectregex.replacement=https://$${1}"
-      - "traefik.http.middlewares.redirect-www.redirectregex.permanent=true"
-      - "traefik.http.routers.web-profile-secure.middlewares=redirect-www@docker"
-
-      # Configuração do serviço
+      - "traefik.http.routers.web-profile.entrypoints=websecure"
+      - "traefik.http.routers.web-profile.tls=true"
+      - "traefik.http.routers.web-profile.tls.certresolver=letsencrypt"
       - "traefik.http.services.web-profile.loadbalancer.server.port=80"
 
-      # Health check
-      - "traefik.http.services.web-profile.loadbalancer.healthcheck.path=/health"
-      - "traefik.http.services.web-profile.loadbalancer.healthcheck.interval=10s"
-      - "traefik.http.services.web-profile.loadbalancer.healthcheck.timeout=3s"
-
-      # Security headers
-      - "traefik.http.middlewares.security-headers.headers.frameDeny=true"
-      - "traefik.http.middlewares.security-headers.headers.contentTypeNosniff=true"
-      - "traefik.http.middlewares.security-headers.headers.browserXssFilter=true"
-      - "traefik.http.middlewares.security-headers.headers.stsSeconds=31536000"
-      - "traefik.http.middlewares.security-headers.headers.stsIncludeSubdomains=true"
-      - "traefik.http.middlewares.security-headers.headers.stsPreload=true"
+      # Middleware para redirecionamento HTTPS
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
 
 networks:
   coolify:
