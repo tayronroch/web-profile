@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
 
     ports:
-      - "3333:3333"
+      - "4333:4333"
 
     networks:
       - coolify
@@ -26,7 +26,7 @@ services:
       - "traefik.http.routers.web-profile.entrypoints=websecure"
       - "traefik.http.routers.web-profile.tls=true"
       - "traefik.http.routers.web-profile.tls.certresolver=letsencrypt"
-      - "traefik.http.services.web-profile.loadbalancer.server.port=3333"
+      - "traefik.http.services.web-profile.loadbalancer.server.port=4333"
 
       # Middleware para redirecionamento HTTPS
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
