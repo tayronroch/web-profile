@@ -6,9 +6,6 @@ services:
     container_name: web-profile
     restart: unless-stopped
 
-    ports:
-      - "4333:80"
-
     networks:
       - coolify
 
