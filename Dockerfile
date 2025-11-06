@@ -3,6 +3,14 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
+# Build arguments
+ARG VITE_GITHUB_USERNAME
+ARG VITE_GITHUB_TOKEN
+
+# Set as environment variables for build
+ENV VITE_GITHUB_USERNAME=$VITE_GITHUB_USERNAME
+ENV VITE_GITHUB_TOKEN=$VITE_GITHUB_TOKEN
+
 # Copiar package files
 COPY package*.json ./
 
