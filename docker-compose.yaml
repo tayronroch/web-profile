@@ -12,6 +12,22 @@ services:
     networks:
       - coolify
 
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
+      # HTTP Router (redireciona para HTTPS)
+      - "traefik.http.routers.tayron-profile-http.rule=Host(`tayronrocha.com`)"
+      - "traefik.http.routers.tayron-profile-http.entrypoints=web"
+      - "traefik.http.routers.tayron-profile-http.middlewares=tayron-redirect-https"
+      # HTTPS Router
+      - "traefik.http.routers.tayron-profile.rule=Host(`tayronrocha.com`)"
+      - "traefik.http.routers.tayron-profile.entrypoints=websecure"
+      - "traefik.http.routers.tayron-profile.tls=true"
+      - "traefik.http.routers.tayron-profile.tls.certresolver=letsencrypt"
+      - "traefik.http.services.tayron-profile.loadbalancer.server.port=8383"
+      # Middleware para redirecionamento HTTPS
+      - "traefik.http.middlewares.tayron-redirect-https.redirectscheme.scheme=https"
+
 networks:
   coolify:
     external: true
