@@ -5,10 +5,8 @@ services:
     build:
       context: .
       args:
-        - NEXT_PUBLIC_GITHUB_USERNAME=${VITE_GITHUB_USERNAME}
-        - NEXT_PUBLIC_GITHUB_TOKEN=${VITE_GITHUB_TOKEN}
-        - VITE_GITHUB_USERNAME=${VITE_GITHUB_USERNAME}
-        - VITE_GITHUB_TOKEN=${VITE_GITHUB_TOKEN}
+        - GITHUB_USERNAME=${VITE_GITHUB_USERNAME}
+        - GITHUB_TOKEN=${VITE_GITHUB_TOKEN}
     container_name: web-profile
     restart: unless-stopped
     environment:
