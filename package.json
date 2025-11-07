@@ -1,7 +1,7 @@
 {
   "name": "web-profile-nextjs",
   "version": "1.0.0",
-  "description": "Portfólio e blog de Tayron Silva",
+  "description": "Portfólio e blog de Tayron Rocha desenvolvido com Next.js, Tailwind CSS e React Icons.",
   "scripts": {
     "dev": "next dev -p 8383",
     "build": "next build",
