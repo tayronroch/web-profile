@@ -24,10 +24,6 @@ WORKDIR /app
 ARG GITHUB_USERNAME
 ARG GITHUB_TOKEN
 
-# Set as environment variables (mapeamento para Next.js)
-ENV NEXT_PUBLIC_GITHUB_USERNAME=$GITHUB_USERNAME
-ENV NEXT_PUBLIC_GITHUB_TOKEN=$GITHUB_TOKEN
-
 # Copiar dependências
 COPY --from=deps /app/node_modules ./node_modules
 
@@ -36,6 +32,10 @@ COPY . .
 
 # Desabilitar telemetria do Next.js
 ENV NEXT_TELEMETRY_DISABLED=1
+
+# Set as environment variables APENAS para o build
+ENV NEXT_PUBLIC_GITHUB_USERNAME=$GITHUB_USERNAME
+ENV NEXT_PUBLIC_GITHUB_TOKEN=$GITHUB_TOKEN
 
 # Build da aplicação
 RUN npm run build

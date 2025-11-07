@@ -5,14 +5,14 @@ services:
     build:
       context: .
       args:
-        - GITHUB_USERNAME=${VITE_GITHUB_USERNAME}
-        - GITHUB_TOKEN=${VITE_GITHUB_TOKEN}
+        GITHUB_USERNAME: ${VITE_GITHUB_USERNAME}
+        GITHUB_TOKEN: ${VITE_GITHUB_TOKEN}
     container_name: web-profile
     restart: unless-stopped
     environment:
-      - PORT=8383
-      - HOSTNAME=0.0.0.0
-      - NODE_ENV=production
+      PORT: 8383
+      HOSTNAME: "0.0.0.0"
+      NODE_ENV: production
 
     ports:
       - "8383:8383"
