@@ -1,13 +1,15 @@
+'use client'
+
 import React, { useEffect, useRef } from 'react';
-import { 
-  FaBrain, 
-  FaCode, 
-  FaDatabase, 
-  FaCloud, 
-  FaShieldAlt, 
-  FaUsers, 
-  FaLightbulb, 
-  FaRocket, 
+import {
+  FaBrain,
+  FaCode,
+  FaDatabase,
+  FaCloud,
+  FaShieldAlt,
+  FaUsers,
+  FaLightbulb,
+  FaRocket,
   FaHeart,
   FaJs,
   FaPython,

@@ -1,6 +1,6 @@
 # Portfolio Pessoal - Tayron Rocha
 
-Portfolio pessoal desenvolvido com React + Vite, integrado com a API do GitHub para exibir estatísticas e repositórios em tempo real.
+Portfolio pessoal desenvolvido com Next.js 15, integrado com a API do GitHub para exibir estatísticas e repositórios em tempo real.
 
 **Live Demo**: [tayronrocha.com](https://tayronrocha.com)
 
@@ -14,13 +14,16 @@ Portfolio pessoal desenvolvido com React + Vite, integrado com a API do GitHub p
   - Repositórios em destaque
   - Cards visuais com GitHub Readme Stats
 - Animações e transições suaves
-- Performance otimizada
+- Performance otimizada com SSR/SSG
+- SEO otimizado
+- Image Optimization automática
 - HTTPS com certificado SSL automático
 - Docker pronto para deploy
 
 ## Tecnologias
 
-- **Frontend**: React 18 + Vite
+- **Framework**: Next.js 15 (App Router)
+- **Frontend**: React 18
 - **Styling**: TailwindCSS
 - **Icons**: React Icons
 - **Carousel**: React Slick
@@ -54,8 +57,8 @@ cp .env.example .env.local
 
 Edite o `.env.local` com suas credenciais:
 ```bash
-VITE_GITHUB_USERNAME=seu_username
-VITE_GITHUB_TOKEN=seu_token_aqui  # Opcional
+NEXT_PUBLIC_GITHUB_USERNAME=seu_username
+NEXT_PUBLIC_GITHUB_TOKEN=seu_token_aqui  # Opcional
 ```
 
 4. Execute o projeto:
@@ -63,14 +66,14 @@ VITE_GITHUB_TOKEN=seu_token_aqui  # Opcional
 npm run dev
 ```
 
-5. Acesse: `http://localhost:5173`
+5. Acesse: `http://localhost:3000`
 
 ## Variáveis de Ambiente
 
 | Variável | Descrição | Obrigatório |
 |----------|-----------|-------------|
-| `VITE_GITHUB_USERNAME` | Seu username do GitHub | ✅ Sim |
-| `VITE_GITHUB_TOKEN` | Token de acesso do GitHub | ❌ Opcional* |
+| `NEXT_PUBLIC_GITHUB_USERNAME` | Seu username do GitHub | ✅ Sim |
+| `NEXT_PUBLIC_GITHUB_TOKEN` | Token de acesso do GitHub | ❌ Opcional* |
 
 **Nota**: O token é opcional, mas recomendado para evitar rate limit da API (60 req/hora sem token, 5000 req/hora com token).
 
@@ -111,25 +114,30 @@ docker-compose up -d --build
 ## Estrutura do Projeto
 
 ```
-web-profile/
+web-profile-nextjs/
 ├── src/
-│   ├── components/
-│   │   ├── Header.jsx           # Cabeçalho com navegação
-│   │   ├── Home.jsx              # Seção inicial/hero
-│   │   ├── Skills.jsx            # Habilidades técnicas
-│   │   ├── GitHubStats.jsx       # Estatísticas do GitHub
-│   │   ├── FeaturedRepos.jsx     # Repositórios em destaque
-│   │   ├── Projects.jsx          # Projetos
-│   │   ├── Blog.jsx              # Blog/artigos
-│   │   └── FloatButtons.jsx      # Botões flutuantes
-│   ├── App.jsx                   # Componente principal
-│   └── main.jsx                  # Entry point
+│   ├── app/
+│   │   ├── layout.jsx            # Layout raiz da aplicação
+│   │   ├── page.jsx              # Página principal (home)
+│   │   └── globals.css           # Estilos globais + Tailwind
+│   └── components/
+│       ├── Header.jsx            # Cabeçalho com navegação
+│       ├── Home.jsx              # Seção inicial/hero
+│       ├── Skills.jsx            # Habilidades técnicas
+│       ├── GitHubStats.jsx       # Estatísticas do GitHub
+│       ├── FeaturedRepos.jsx     # Repositórios em destaque
+│       ├── Projects.jsx          # Projetos
+│       ├── Blog.jsx              # Blog/artigos
+│       └── FloatButtons.jsx      # Botões flutuantes
 ├── public/                       # Assets públicos
 ├── Dockerfile                    # Configuração Docker
 ├── docker-compose.yml            # Compose com labels Traefik
 ├── nginx.conf                    # Configuração Nginx
+├── next.config.js                # Configuração Next.js
+├── jsconfig.json                 # Configuração aliases
 ├── .env.example                  # Template de variáveis
 ├── DEPLOY.md                     # Instruções de deploy
+├── MIGRAÇÃO.md                   # Guia de migração Vite → Next.js
 └── README.md                     # Este arquivo
 ```
 
@@ -142,8 +150,11 @@ npm run dev
 # Build para produção
 npm run build
 
-# Preview do build
-npm run preview
+# Iniciar servidor de produção
+npm run start
+
+# Lint
+npm run lint
 ```
 
 ## Segurança
@@ -168,7 +179,7 @@ Retorna: `healthy`
 ### GitHub API Rate Limit
 
 Se você atingir o rate limit da API do GitHub:
-- Configure o `VITE_GITHUB_TOKEN` no `.env.local`
+- Configure o `NEXT_PUBLIC_GITHUB_TOKEN` no `.env.local`
 - Isso aumenta o limite de 60 para 5000 requisições/hora
 
 ### Repositórios não carregam

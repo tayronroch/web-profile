@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from "react";
 // Ícones da lib react-icons
 import { FaWhatsapp, FaArrowUp } from "react-icons/fa";
@@ -98,37 +100,6 @@ const FloatButtons = () => {
           <FaArrowUp className="text-sm" />
         </button>
       )}
-
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(10px) scale(0.9);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-
-        @keyframes soft-pulse {
-          0%,
-          100% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0.8;
-          }
-        }
-
-        .animate-fade-in {
-          animation: fade-in 0.4s ease-out;
-        }
-
-        .animate-soft-pulse {
-          animation: soft-pulse 3s ease-in-out infinite;
-        }
-      `}</style>
     </div>
   );
 };

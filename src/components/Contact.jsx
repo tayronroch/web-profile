@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { FaInstagram, FaYoutube, FaGithub, FaLinkedin, FaTiktok } from 'react-icons/fa';
 

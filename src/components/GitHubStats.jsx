@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { FaGithub, FaStar, FaCodeBranch, FaUsers, FaCode } from 'react-icons/fa';
 
@@ -6,8 +8,8 @@ const GitHubStats = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const username = import.meta.env.VITE_GITHUB_USERNAME;
-  const token = import.meta.env.VITE_GITHUB_TOKEN;
+  const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME;
+  const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 
   useEffect(() => {
     const fetchGitHubStats = async () => {
