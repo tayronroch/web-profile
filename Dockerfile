@@ -50,6 +50,9 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
+# Install curl for healthcheck
+RUN apk add --no-cache curl
+
 # Copiar arquivos públicos
 COPY --from=builder /app/public ./public
 
@@ -58,6 +61,8 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 CMD curl -f http://localhost:8383 || exit 1
 
 # Expor porta 8383
 EXPOSE 8383
